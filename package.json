@@ -1,0 +1,17 @@
+{
+  "name": "task-b",
+  "version": "1.0.0",
+  "description": "App demonstrating RESTful implentation. Part of CS3219 Assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "restful"
+  ],
+  "author": "Triston Pang Erh Syen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
