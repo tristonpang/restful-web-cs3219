@@ -22,4 +22,11 @@ router
   .put(contactController.update)
   .delete(contactController.delete);
 
+router.get("/test", function (req, res) {
+  res.json({
+    status: "Test working!",
+    message: "Test success",
+  });
+});
+
 module.exports = router;
