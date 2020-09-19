@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./index.local.js",
-    "start-serverless": "nodemon index",
+    "start-serverless": "nodemon ./index.js",
     "test": "mocha --exit"
   },
   "keywords": [
