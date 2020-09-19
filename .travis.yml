@@ -4,7 +4,7 @@ node_js:
 services: mongodb
 deploy:
   provider: lambda
-  function_name: "app"
+  function_name: "sample-app-dev-app"
   region: "us-east-1"
   role: "arn:aws:iam::833368887726:role/sample-app-dev-us-east-1-lambdaRole"
   runtime: "nodejs12.x"
