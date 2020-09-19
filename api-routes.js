@@ -5,7 +5,7 @@ let contactController = require("./contactController");
 router.get("/", function (req, res) {
   res.json({
     status: "API working!",
-    message: "Welcome to the server",
+    message: "Welcome to the server, if you see this it means Travis has successfully deployed :)",
   });
 });
 
