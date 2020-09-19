@@ -6,6 +6,6 @@ deploy:
   provider: lambda
   function_name: "app"
   region: "us-east-1"
-  role: "arn:aws:iam::833368887726:role/lambda_deployer"
+  role: "arn:aws:iam::833368887726:role/sample-app-dev-us-east-1-lambdaRole"
   runtime: "nodejs12.x"
   handler_name: "handler"
