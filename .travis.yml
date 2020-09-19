@@ -2,3 +2,10 @@ language: node_js
 node_js:
   - '13.11.0'
 services: mongodb
+deploy:
+  provider: lambda
+  function_name: "app"
+  region: "us-east-1"
+  role: "arn:aws:iam::833368887726:role/lambda_deployer"
+  runtime: "nodejs13.11"
+  handler_name: "handler"
