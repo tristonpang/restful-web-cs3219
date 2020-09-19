@@ -4,8 +4,6 @@ let mongoose = require("mongoose");
 // Setup server port
 var port = process.env.PORT || 8080;
 
-// Close connection to Mongo Atlas
-mongoose.connection.close();
 // Connect to Mongoose and set connection variable
 mongoose
   .connect(`mongodb://localhost:27017/task-b`, {

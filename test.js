@@ -31,16 +31,15 @@ describe("API", () => {
   };
 
   before((done) => {
-    Contact.remove({}, (err) => {
-      done();
-    });
     var testContact1 = new Contact();
     testContact1.name = "John Doe";
     testContact1.gender = "Male";
     testContact1.email = "test1@gmail.com";
     testContact1.phone = "12345678";
-
-    testContact1.save();
+    
+    Contact.remove({}, (err) => {
+      testContact1.save().then(() => done());  
+    });
   });
 
   it("should successfully GET all contacts", (done) => {
