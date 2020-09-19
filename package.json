@@ -4,7 +4,8 @@
   "description": "App demonstrating RESTful implentation. Part of CS3219 Assignment",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index",
+    "start": "nodemon ./index.local.js",
+    "start-serverless": "nodemon index",
     "test": "mocha --exit"
   },
   "keywords": [
@@ -16,7 +17,8 @@
     "body-parser": "^1.19.0",
     "chai-http": "^4.3.0",
     "express": "^4.17.1",
-    "mongoose": "^5.10.3"
+    "mongoose": "^5.10.3",
+    "serverless-http": "^2.5.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

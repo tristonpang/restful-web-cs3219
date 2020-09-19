@@ -3,7 +3,7 @@ const like = require("chai-like");
 chai.use(like);
 
 const { expect } = chai;
-const server = require("./index");
+const server = require("./index.local.js");
 const chaiHttp = require("chai-http");
 
 const Contact = require("./contactModel");
