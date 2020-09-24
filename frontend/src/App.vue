@@ -11,6 +11,7 @@ import axios from "axios";
 
 import ContactsTable from "@/components/ContactsTable.vue";
 import ContactForm from "@/components/ContactForm.vue";
+// TODO: extract API URL as a const
 
 export default {
   name: "App",
@@ -26,25 +27,30 @@ export default {
   // Fetches posts when the component is created.
   created() {
     axios
-      .get(`https://0uolcs7ym4.execute-api.us-east-1.amazonaws.com/dev/api/contacts`)
+      .get(
+        `https://0uolcs7ym4.execute-api.us-east-1.amazonaws.com/dev/api/contacts`
+      )
       .then((response) => {
         // console.log(response.data);
         this.contacts = response.data.data;
       })
       .catch((e) => {
-        this.errors.push(e);
+        console.log(e);
       });
   },
   methods: {
-    //TODO: change this into proper API POST call
     addContact(contact) {
-      const lastId =
-        this.contacts.length > 0
-          ? this.contacts[this.contacts.length - 1].id
-          : 0;
-      const id = lastId + 1;
-      const newContact = { ...contact, id };
-      this.contacts = [...this.contacts, newContact];
+      let newSavedContact;
+      axios
+        .post(`https://0uolcs7ym4.execute-api.us-east-1.amazonaws.com/dev/api/contacts`, {...contact})
+        .then((response) => {
+          newSavedContact = response.data.data;
+          this.contacts = [...this.contacts, newSavedContact];
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      
     },
   },
 };
