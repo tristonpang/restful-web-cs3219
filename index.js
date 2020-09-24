@@ -3,6 +3,7 @@ let express = require("express");
 let bodyParser = require("body-parser");
 let apiRoutes = require("./api-routes");
 let mongoose = require("mongoose");
+const cors = require('cors');
 
 // Initialize the app
 let app = express();
@@ -15,6 +16,8 @@ app.use(
 );
 app.use(bodyParser.json());
 
+app.use(cors());
+
 // Send message for default URL
 app.get("/", (req, res) => res.send("Hello World with Express"));
 
@@ -24,13 +27,6 @@ app.use("/api", apiRoutes);
 // app.listen(port, function () {
 //   console.log("Running REST server on port " + port);
 // });
-
-// Add CORS headers
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
 
 if (process.env.DB_SOURCE == "atlas") {
   mongoose
