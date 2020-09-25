@@ -25,7 +25,7 @@
       >
         <b-form-input id="input-phone" v-model="contact.phone" type="text" />
       </b-form-group>
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <b-button type="submit" variant="primary">Add contact</b-button>
     </b-form>
   </div>
 </template>
@@ -45,7 +45,6 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log("test handle submit");
       this.$emit("add:contact", this.contact);
       this.contact = {
         name: "",

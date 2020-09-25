@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Contacts</h1>
     <contact-form @add:contact="addContact" />
-    <contacts-table :contacts="contacts" />
+    <contacts-table :contacts="contacts" @delete:contact='deleteContact'/>
   </div>
 </template>
 
@@ -11,7 +11,7 @@ import axios from "axios";
 
 import ContactsTable from "@/components/ContactsTable.vue";
 import ContactForm from "@/components/ContactForm.vue";
-// TODO: extract API URL as a const
+const apiUrl = 'https://0uolcs7ym4.execute-api.us-east-1.amazonaws.com/dev/api/contacts';
 
 export default {
   name: "App",
@@ -27,9 +27,7 @@ export default {
   // Fetches posts when the component is created.
   created() {
     axios
-      .get(
-        `https://0uolcs7ym4.execute-api.us-east-1.amazonaws.com/dev/api/contacts`
-      )
+      .get(apiUrl)
       .then((response) => {
         // console.log(response.data);
         this.contacts = response.data.data;
@@ -42,7 +40,7 @@ export default {
     addContact(contact) {
       let newSavedContact;
       axios
-        .post(`https://0uolcs7ym4.execute-api.us-east-1.amazonaws.com/dev/api/contacts`, {...contact})
+        .post(apiUrl, {...contact})
         .then((response) => {
           newSavedContact = response.data.data;
           this.contacts = [...this.contacts, newSavedContact];
@@ -52,6 +50,17 @@ export default {
         });
       
     },
+    deleteContact(contactId) {
+      this.contacts = this.contacts.filter(contact => contact._id !== contactId);
+      let removedContact = this.contacts.filter(contact => contact._id === contactId);
+      axios
+        .delete(apiUrl + '/' + contactId)
+        .catch((e) => {
+          console.log(e);
+          // re-add contact on error
+          this.contacts = [...this.contacts, removedContact];
+        });
+    }
   },
 };
 </script>

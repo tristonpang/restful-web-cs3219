@@ -15,6 +15,7 @@
           <td>{{ contact.gender }}</td>
           <td>{{ contact.email }}</td>
           <td>{{ contact.phone }}</td>
+          <b-button @click="handleDelete(contact._id)">Delete</b-button>
         </tr>
       </tbody>
     </table>
@@ -26,6 +27,11 @@ export default {
   name: "contacts-table",
   props: {
     contacts: Array,
+  },
+  methods: {
+    handleDelete(id) {
+      this.$emit("delete:contact", id);
+    }
   },
 };
 </script>
